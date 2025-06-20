@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UR-CST Virtual Tour</title>
+  <link rel="icon" href="cropped_image.png" type="image/png">
+  <link rel="stylesheet" href="Style Sheet.css">
+</head>
+<script src="//code.tidio.co/ncoz8nwo85xr0ilm04ymakiddfn68jvg.js" async></script>
+<body>
+
+  <!-- FIRST PAGE -->
+  <section id="welcome-section">
+    <header style="background-color: #00628b; padding: 10px; display:flex; align-items:center">
+      <img src="cropped_image.png" alt="UR-CST Logo" style="height: 70px; margin-right: 20px;">
+      <h1 style="color: whitesmoke; font-size:35pt">UR-CST Virtual tour</h1>
+      <nav style="font-size:15pt;">
+        <a href="First Web Map.html" >Explore Campus Now</a>
+      </nav>
+  </header>
+  <style>
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position:center; /* This shows the upper part of the video */
+      z-index: -1;
+    }
+  </style> 
+
+  <video autoplay muted loop id="bg-video">
+    <source src="V2~1.mp4" type="video/mp4">
+  </video>
+  <script>
+    const video = document.getElementById('bg-video');
+    video.playbackRate = 0.5; // Slows it down to 50% speed
+  </script>  
+
+    <div class="center-box">
+      <div class="content-box">
+        <h2>WELCOME</h2>
+        <p>We are excited to have you explore our campus from wherever you are! <br>This interactive tour offers a glimpse into our learning spaces, key facilities, and vibrant environment.</p>
+        <a href="https://my.matterport.com/show/?m=j4KmjCXe7kw" class="btn">Start Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND PAGE -->
+  <!--<section id="virtual-tour">
+    <div class="tour-text">
+      <h1>VIRTUAL TOUR</h1>
+      <p>Enter the Virtual Reality Realm</p>
+      <p>Welcome to UR-CST Virtual Tour, your gateway to exploring our campus in Kigali, Rwanda, from anywhere in the world. Dive into a 360-degree moving space, discover a 2D map or experience the campus in stunning 3D. Get ready for an immersive journey!</p>
+      <a href="#">Start Exploring</a>
+    </div>
+    <div class="tour-image">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?fit=crop&w=600&q=80" alt="Virtual Tour">
+    </div>
+  </section>-->
+</body>
+</html>

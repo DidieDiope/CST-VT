@@ -1,0 +1,144 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* === FIRST SECTION === */
+    #welcome-section {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+    }
+
+    #bg-video{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+        object-fit: cover;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .center-box {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content-box {
+      background-color: #00628b;
+      padding: 40px;
+      max-width: 400px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    .content-box h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .content-box p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: rgb(255, 255, 255);
+      border: none;
+      padding: 12px 24px;
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      font-size: 14pt;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #4dbc55;
+    }
+
+    /* === SECOND SECTION === */
+    #virtual-tour {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px;
+      background: linear-gradient(to bottom right, #000033, #0033cc);
+      color: white;
+    }
+
+    .tour-text {
+      max-width: 40%;
+    }
+
+    .tour-text h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    .tour-text p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .tour-text a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: white;
+      color: #000;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .tour-image img {
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      #virtual-tour {
+        flex-direction: column;
+        text-align: center;
+      }
+      .tour-text, .tour-image {
+        max-width: 100%;
+      }
+      .tour-image img {
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  

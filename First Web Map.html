@@ -1,0 +1,299 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--This is the Web titleand the icon(link below the title)-->
+    <title>University of Rwanda - CST Map</title>
+    <link rel="icon" href="C:\Users\educa\OneDrive\Documents\HTML for Class\UR Logo.png" type="image/png">
+    <link rel="icon" href="cropped_image.png" type="image/png">
+    <!--This is downloaded java scripts and CSS file links-->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css">
+</head>
+<body>
+    <!--This is Web header for good looking page.-->
+    <!--<header style="background-color: #003366; padding: 20px; display: flex; align-items: center;">
+        <img src="C:\Users\educa\OneDrive\Documents\HTML for Class\UR Logo.png" alt="UR-CST Logo" style="height: 100px; margin-right: 20px;">
+        <h1 style="color: whitesmoke;">UR-College of Science and Technology</h1>
+    </header>-->
+    <!--This is Division that Contains our map-->
+    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+        <!-- This is the map container -->
+        <div id="map"
+            style="flex: 0 1 70%; height: 600px; border-style: solid; border-color: rgb(5, 145, 42); margin-top: 3px;">
+        </div>
+
+        <!-- This is the info panel -->
+         <div style="flex: 0 1 28%; height: 595px; background-color: #d7dbe0; padding: 5px; margin-top: 2px; margin-bottom: 2px;">    
+            <!--Search bar top and declaration-->
+            <style>
+                #searchInput {
+                    width: 60%;
+                    padding: 10px;
+                    font-size: 16px;
+                    border: 3px solid #004080;
+                    border-radius: 6px;
+                    margin-bottom: 10px;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                }
+            </style>
+            <input type="text" id="searchInput" placeholder="Search for a building...">
+        <div id="info-panel"
+            style="flex: 0 1 28%; height: 530px; background-color: #d7dbe0; padding: 5px; margin-top: 2px; margin-bottom: 2px;">
+            <h2 style="font-weight: 250;"><b>Description</b></h2>
+            <p style="font-size: larger;">This website showcases the key buildings and boundaries of the University of
+                Rwanda - College of Science and Technology, Nyarugenge Geographicaly. For more information about UR-CST,
+                visit <a href="https://cst.ur.ac.rw/">here!</a>.<br><br>This is desciption panel, for any object clicked
+                their information are displayed here!</p>
+        </div>
+        </div>
+    </div>
+    
+    <!--This is java script codes: this is where magic happens-->
+    <script>
+        var map = L.map('map', {
+            center: [-1.9596289877472453, 30.063092702183383],
+            zoom: 16
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap | Done By Ndatimana,Munyana and Kiiza'
+        }).addTo(map);
+
+        // The CST buildings and their descriptions
+        var buildings = [
+            {
+                name: "Ikaze Building-CMHS",
+                description: "This building consists of the Eye hospital, classes, and offices.",
+                coordinates: [-1.9547444126850089, 30.063420892094566],
+                image: "IKAZE 3D.jpg",
+                tourLink: "https://my.matterport.com/show/?m=GkfqU4a4g6y"
+            },
+            {
+                name: "MUHAZI Building",
+                description: "This building serves as classes, offices, hostels, and an Conference hall.",
+                coordinates: [-1.9556084555154971, 30.063517929027125],
+                image: "Muhazi.jpg",
+                tourLink:"https://my.matterport.com/show/?m=rZDqqVhb8Y5",
+            },
+            {
+                name: "DUSAID Hostels",
+                description: "Student hostels providing accommodation on campus.",
+                coordinates: [-1.9552306536427888, 30.064035633049105]
+            },
+            {
+                name: "Administration Building",
+                description: "This building contains high-level offices.",
+                coordinates: [-1.956867144920698, 30.06361468591037],
+                image: "Administartion.jpg"
+            },
+            {
+                name: "Workshop Building",
+                description: "This is a workshop area for practical sessions.",
+                coordinates: [-1.9568198073115664, 30.06409509206519]
+            },
+            {
+                name: "Campus Library",
+                description: "This library serves students and lecturers with research.",
+                coordinates: [-1.9586121980061064, 30.063064062972384],
+                image: "Library.jpg"
+            },
+            {
+                name: "EINSTEIN Building",
+                description: "It contains Classes and Hall.",
+                coordinates: [-1.958603519472175, 30.064244139778527],
+                image: "audi.jpeg"
+            },
+            {
+                name: "Camp Kigali Block",
+                description: "It serves as Classes.",
+                coordinates: [-1.9596823670178376, 30.063081043069253]
+            },
+            {
+                name: "Mining Building",
+                description: "The building serves as classes and offices",
+                coordinates: [-1.9601973798212122, 30.06390376788568],
+                image: "School-of-Mining-Use.jpg"
+            },
+            {
+                name: "SABE",
+                description: "School of Architecture and Built Environment, This composed by Architecture Classes and Hall",
+                coordinates: [-1.9608761724168091, 30.06338261093435],
+                image: "SABE.jpg"
+            },
+            {
+                name: "AGACIRO Building",
+                description: "It serves as workshop and offices",
+                coordinates: [-1.9580015197588434, 30.06441573463313],
+                image: "Agaciro.jpg"
+            },
+            {
+                name: "UR Headquarter",
+                description: "Under construction by Now-27th december 2024.",
+                coordinates: [-1.9586327568785982, 30.06103348338397],
+                image: "Heead Quarter.png"
+            },
+            {
+                name: "Hostels",
+                description: "Student hostels providing accommodation on campus.",
+                coordinates: [-1.9610157197913665, 30.061288819221822],
+                image: "New Hostels.jpg"
+            },
+            {
+                name: "Karisimbi Building",
+                description: "This is Serves as Labaratories",
+                coordinates: [-1.9618001292088998, 30.06450934541662],
+                image: "Kalisimbi.jpg"
+            },
+            {
+                name: "Muhabura Building",
+                description: "This serves as classes",
+                coordinates: [-1.962781167828402, 30.064593818922866],
+                image: "Muhabura.jpg"
+            },
+            {
+                name: "The Restaurant",
+                description: "Where People Go and take food and drinks.",
+                coordinates: [-1.9577176939177197, 30.063899004464766],
+                image: "Restaurant.jpg"
+            },
+
+        ];
+
+
+        // Store markers in an object for reference
+        var buildingMarkers = {};
+
+        buildings.forEach(function (building) {
+            var marker = L.marker(building.coordinates).addTo(map);
+
+            // Save marker for later reference
+            buildingMarkers[building.name] = marker;
+
+            // Bind a popup
+            marker.bindPopup(`<h3>${building.name}</h3>`);
+
+            // On marker click, show info panel
+            marker.on('click', function () {
+                updateInfoPanel(building);
+                highlightMarker(building.name);
+            });
+        });
+
+       
+        function updateInfoPanel(building) {
+    const imageHTML = building.image
+        ? (building.tourLink
+            ? `<a href="${building.tourLink}" target="_blank"><img src="${building.image}" alt="${building.name}" style="width: 8cm; margin-top: 10px; border: 1px solid #ddd; border-radius: 4px;"/></a>`
+            : `<img src="${building.image}" alt="${building.name}" style="width: 10cm; margin-top: 10px; border: 1px solid #ddd; border-radius: 4px;"/>`)
+        : "";
+
+    document.getElementById('info-panel').innerHTML = `
+        <h2 style="font-weight: 250;"><b>${building.name}</b></h2>
+        <p style="font-size: larger;">${building.description}</p>
+        ${imageHTML}
+    `;
+}
+
+
+        function highlightMarker(buildingName) {
+            // Reset all markers to default icon
+            Object.keys(buildingMarkers).forEach(name => {
+                buildingMarkers[name].setIcon(new L.Icon.Default());
+            });
+
+            // Set searched one to red
+            buildingMarkers[buildingName].setIcon(
+                new L.Icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 32],
+                    popupAnchor: [0, -32]
+                })
+            );
+        }
+
+        //Search Bar JS Codes Bellow-->   
+        document.getElementById('searchInput').addEventListener('input', function (e) {
+            var query = e.target.value.toLowerCase();
+            var found = buildings.find(b => b.name.toLowerCase().includes(query));
+
+            if (found) {
+                map.setView(found.coordinates, 18);
+                updateInfoPanel(found);
+                highlightMarker(found.name);
+            }
+        });
+    // Check if a command link was clicked (like #goto:Einstein)
+    document.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#goto:')) {
+            e.preventDefault();
+            const buildingName = e.target.getAttribute('href').replace('#goto:', '');
+            goToBuilding(buildingName);
+        }
+    });
+
+        var line1 = L.polyline([[-1.9517369889361011, 30.06269413329019], [-1.9544120159124765, 30.063093614303224], [-1.954280532740844, 30.064129347901588], [-1.9561571425474995, 30.064354856743225],
+        [-1.9579259160127316, 30.064632922381115], [-1.9608472452526944, 30.06506084379491], [-1.9617826881769123, 30.06518782958571], [-1.9625409288266051, 30.065192339530643],
+        [-1.9635301408223857, 30.065445720356276], [-1.963999379041132, 30.065538200377866]],
+            { color: 'black', weight: 10 }).addTo(map);
+        line1.bindPopup("<h4>Kiyovu to Biryogo Road</h4>");
+
+        var line2 = L.polyline([[-1.9483203797286286, 30.062204397979798], [-1.9544430459233462, 30.063098046084995], [-1.9570187766156113, 30.063429213341255], [-1.9572414665956404, 30.063449455020077],
+        [-1.9574464884968599, 30.063389119258115], [-1.9575851797687653, 30.063186994455556], [-1.9578691072840548, 30.061542012006658], [-1.9580703206149188, 30.060230780199955], [-1.9580447601656537, 30.060049867850555]],
+            { color: 'black', weight: 10 }).addTo(map);
+        line2.bindPopup("<h4>Town to Serena Road</h4>");
+
+        var line3 = L.polyline([[-1.9558827694426837, 30.058284581894963], [-1.956053027064163, 30.058542698373977], [-1.9564141795373744, 30.05878532786425], [-1.9578175141235725, 30.059797144461974],
+        [-1.9579722936015969, 30.059905553383164], [-1.9580961171737294, 30.060189481510076], [-1.9582354187354032, 30.060256591855143], [-1.9589164481619417, 30.06042178640171], [-1.9601546827734937, 30.06061795492576],
+        [-1.9608357114440396, 30.06062827958168], [-1.9625228039780838, 30.060406299400825], [-1.9641428239179033, 30.0599675013865], [-1.965186346001936, 30.059592265209492]],
+            { color: 'black', weight: 10 }).addTo(map);
+        line3.bindPopup("<h4>Gitega to Biryogo Road</h4>");
+
+        var line4 = L.polyline([[-1.9637141514144494, 30.05961512909032], [-1.9643658369598354, 30.06140923384691], [-1.964955967750915, 30.063019852522963], [-1.9651522727258166, 30.064326804160267],
+        [-1.9652132526578008, 30.06468580557106], [-1.965231397351686, 30.064846178024133], [-1.9652132526578008, 30.064988395105168], [-1.9651588185749373, 30.065126073343187], [-1.9649743475031338, 30.065266777476545],
+        [-1.9645978450023525, 30.065433201743502], [-1.9643619638682641, 30.065510362090297], [-1.9641170103479086, 30.065548185791673], [-1.9638312311973196, 30.065525491576373], [-1.9630162311472286, 30.06528947173502]],
+            { color: 'black', weight: 10 }).addTo(map);
+        line4.bindPopup("<h4>Onatracom to Bisima Road</h4>");
+
+        var Area1 = L.polygon([
+            [-1.954347, 30.064088],
+            [-1.963437, 30.065354],
+            [-1.963678, 30.063384],
+            [-1.961145, 30.062618],
+            [-1.961408, 30.060658],
+            [-1.958091, 30.060275],
+            [-1.957559, 30.063480],
+            [-1.954480, 30.063121],
+            [-1.954347, 30.064088]],
+            { color: 'green', weight: 5, fillColor: 'blue', fillOpacity: 0.4 }).addTo(map);
+        //create empty popup, to get location of every clicked area in map.
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            // Format the popup content.
+            var lat = e.latlng.lat.toFixed(5);  // Limit to 5 decimals
+            var lng = e.latlng.lng.toFixed(5);  // Limit to 5 decimals
+            popup
+                .setLatLng(e.latlng)
+                .setContent("Point's Location: Latitude: " + lat + " Longitude: " + lng)
+                .openOn(map);
+        }
+
+        // Ensure that the 'map' object is already initialized and the event listener is added
+        map.on('click', onMapClick);
+    </script>
+    <!--And This is footer that increase web beauty and contains contacts and address.-->
+    <footer id="contact" style="background-color: #004080;
+        color: white;
+        text-align: center;
+        padding: 1px 0;
+        margin-top: 6px;">
+        <p>Contact us: <a href="mailto:ndattyolie@gmail.com" style="color: aliceblue;">ndattyolie@gmail.com</a>
+            | +250 780 524 417</p>
+        <p>&copy; 2024 University of Rwanda - CST. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
